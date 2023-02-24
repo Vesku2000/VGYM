@@ -34,7 +34,7 @@ export async function getStaticPaths(){
   let meetups;
 
   try{
-    meetups = await getDocumentIdList(client, 'meetups');
+    meetups = await getDocumentIdList(client, 'exercises');
     client.close();
   }catch(error){
     console.log("error getting meetup list:", error);
@@ -54,7 +54,7 @@ export async function getStaticProps(context) {
 
   const client = await connectDatabase();
   const meetupIdObj = new ObjectId(meetupId);
-  const selectedMeetup = await getOneDocument(client, 'meetups', { _id: meetupIdObj });
+  const selectedMeetup = await getOneDocument(client, 'exercises', { _id: meetupIdObj });
   client.close();
 
   return {
@@ -62,7 +62,7 @@ export async function getStaticProps(context) {
       meetupData: {
         id: selectedMeetup._id.toString(),
         title: selectedMeetup.title,
-        address: selectedMeetup.address,
+        address: selectedMeetup.motivation,
         image: selectedMeetup.image,
         description: selectedMeetup.description,
       },
