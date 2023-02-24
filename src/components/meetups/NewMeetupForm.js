@@ -41,7 +41,7 @@ function NewMeetupForm(props) {
         <div className={classes.control}>
           <label htmlFor='image'>Exercise Image</label>
           <select value={selectedImage} onChange={handleImageChange}>
-            <option value='https://www.muscleandfitness.com/wp-content/uploads/2015/10/cable-crossover-content-chest-pec.jpg?quality=86&strip=all'>Chest Image</option>
+            <option value='https://www.bodybuilding.com/images/2017/october/the-13-best-chest-exercises-for-men-header-v2-EVL-830x467.jpg'>Chest Image</option>
             <option value='https://www.muscleandfitness.com/wp-content/uploads/2019/12/1109-Man-Posing-Biceps-shutterstock_553440583.jpg?quality=86&strip=all'>Arm Image</option>
             <option value='https://cdn.pixabay.com/photo/2021/01/04/06/21/man-5886580_960_720.jpg'>Leg Image</option>
             <option value='https://i.ytimg.com/vi/gey73xiS8F4/maxresdefault.jpg'>Back Image</option>
