@@ -2,7 +2,7 @@ import MeetupDetail from '../../components/meetups/MeetupDetail';
 import { ObjectId } from 'mongodb';
 import { Fragment } from 'react';
 import Head from 'next/head';
-import { connectDatabase, getAllDocument, getOneDocument } from '../../helpers/db-util';
+import { connectDatabase, getDocumentIdList, getOneDocument } from '../../helpers/db-util';
 
 
 function MeetupDetails(props) {
