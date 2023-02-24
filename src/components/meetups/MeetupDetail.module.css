@@ -5,3 +5,9 @@
 .detail img {
   width: 100%;
 }
+
+.infos{
+  color: #FF0000 ;
+  background-color: #3D0000;
+  border-radius: 12px;
+}
