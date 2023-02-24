@@ -5,54 +5,69 @@ import Head from 'next/head';
 import { connectDatabase, getAllDocument, getOneDocument } from '../../helpers/db-util';
 
 
-function MeetupDetails() {
+function MeetupDetails(props) {
   return (
-    <MeetupDetail
-      image='https://upload.wikimedia.org/wikipedia/commons/8/88/Vaasan_ammattikorkeakoulu_2018.jpg'
-      title='TEMP PLACEHOLDER: First Meetup'
-      address='TEMP PLACEHOLDER: Some Street 5, Some City'
-      description='TEMP PLACEHOLDER: This is a meetup'
-    />
-  );
+    <Fragment>
+      <Head>
+        <title>{props.meetupData.title}</title>
+        <meta name='description' content={props.meetupData.description} />
+      </Head>
+      <MeetupDetail
+      image={props.meetupData.image}
+      title={props.meetupData.title}
+      address={props.meetupData.address}
+      description={props.meetupData.description}
+      />
+    </Fragment>
+  )
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths(){
+
+  let client;
+  try {
+    client = await connectDatabase();
+  } catch (error) {
+    console.log("error connecting to mongoDb:", error);
+  }
+
+  let meetups;
+
+  try{
+    meetups = await getDocumentIdList(client, 'meetups');
+    client.close();
+  }catch(error){
+    console.log("error getting meetup list:", error);
+  }
+
   return {
-    fallback: false,
-    paths: [
-      {
-        params: {
-          meetupId: 'm1',
-        },
-      },
-      {
-        params: {
-          meetupId: 'm2',
-        },
-      },
-    ],
+    fallback: 'blocking',
+    paths: meetups.map((meetup) => ({
+      params: { meetupId: meetup._id.toString()},
+    })),
   };
 }
 
 export async function getStaticProps(context) {
-  // fetch data for a single meetup
 
   const meetupId = context.params.meetupId;
 
-  console.log(meetupId);
+  const client = await connectDatabase();
+  const meetupIdObj = new ObjectId(meetupId);
+  const selectedMeetup = await getOneDocument(client, 'meetups', { _id: meetupIdObj });
+  client.close();
 
   return {
     props: {
       meetupData: {
-        image:
-          'https://upload.wikimedia.org/wikipedia/commons/8/88/Vaasan_ammattikorkeakoulu_2018.jpg',
-        id: meetupId,
-        title: 'TEMP PLACEHOLDER:First Meetup',
-        address: 'TEMP PLACEHOLDER:Some Street 5, Some City',
-        description: 'TEMP PLACEHOLDER: This is a meetup',
+        id: selectedMeetup._id.toString(),
+        title: selectedMeetup.title,
+        address: selectedMeetup.address,
+        image: selectedMeetup.image,
+        description: selectedMeetup.description,
       },
     },
-  };
-}
+  }
+};
 
 export default MeetupDetails;
