@@ -6,14 +6,14 @@ function MainNavigation() {
 
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Meetups!</div>
+      <div className={classes.logo}>Treeni päiväkirja</div>
       <nav>
         <ul>
           <li>
-            <Link href='/'>All Meetups</Link>
+            <Link href='/'>Kaikki Treenit</Link>
           </li>
           <li>
-            <Link href='/new-meetup'>Add New Meetup</Link>
+            <Link href='/new-meetup'>Lisää uusi treeni</Link>
           </li>
         </ul>
       </nav>
