@@ -1,4 +1,4 @@
-//import { MongoClient } from "mongodb";
+
 
 import { connectDatabase, insertDocument } from '../../helpers/db-util';
 // /api/new-meetup
@@ -18,14 +18,14 @@ async function handler(req, res) {
         }
 
         try {
-            await insertDocument(client, 'meetups', data);
+            await insertDocument(client, 'exercises', data);
             client.close();
         } catch (error) {
             res.status(500).json({ message: 'Inserting data failed'});
             return;
         }
 
-        res.status(201).json({ message: 'Meetup inserted'});
+        res.status(201).json({ message: 'exercise inserted'});
        
     }
 }

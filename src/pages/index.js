@@ -11,7 +11,7 @@ export async function getStaticProps() {
 
   const client = await connectDatabase();
   // fetch data from an API
-  const meetups = await getAllDocument(client, 'meetups', { _id: -1}, {});
+  const meetups = await getAllDocument(client, 'exercises', { _id: -1}, {});
 
 
   client.close();
@@ -19,7 +19,7 @@ export async function getStaticProps() {
     props: {
       meetups: meetups.map((meetup) => ({
         title: meetup.title,
-        address: meetup.address,
+        motivation: meetup.motivation,
         image: meetup.image,
         id: meetup._id.toString(),
       }))
