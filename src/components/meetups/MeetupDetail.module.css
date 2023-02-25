@@ -16,3 +16,9 @@
   margin-right: 2rem;
 }
 
+.detail span{
+  text-transform: uppercase;
+  color: #000000;
+  font-weight: 900;
+}
+
