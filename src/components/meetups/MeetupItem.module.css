@@ -1,5 +1,7 @@
 .item {
   margin: 1rem 0;
+  border: 5px solid #FF0000;
+  border-radius: 12px;
 }
 
 .image {
@@ -8,6 +10,7 @@
   overflow: hidden;
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
+  border-radius: 12px 12px 0px 0px;
 }
 
 .image img {
@@ -21,8 +24,9 @@
 }
 
 .content h3 {
-  font-size: 1.25rem;
-  color: #2c292b;
+  font-size: 1.75rem;
+  color: #FF0000;
+  text-transform: uppercase;
 }
 
 .actions {

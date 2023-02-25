@@ -1,14 +1,13 @@
 .detail {
   text-align: center;
   color: #FF0000;
+  background-color: #3D0000;
+  border-radius: 12px;
+  padding-bottom: 5px;
 }
 
 .detail img {
   width: 100%;
+  border-radius: 12px 12px 0px 0px;
 }
 
-.infos{
-  color: #FF0000 ;
-  background-color: #3D0000;
-  border-radius: 12px;
-}
