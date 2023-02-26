@@ -13,6 +13,7 @@ function MeetupDetail(props) {
       <span>Motivaatio</span>
       <address>{props.address}</address>
       <p>{props.description}</p>
+      <button>Poista treeni</button>
       
     </section>
   );
