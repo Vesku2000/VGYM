@@ -7,25 +7,30 @@ function NewMeetupForm(props) {
   const titleInputRef = useRef();
   const motivationInputRef = useRef();
   const descriptionInputRef = useRef();
+  const dateInputRef = useRef();
 
   const [selectedImage, setSelectedImage] = useState('chestImg');
 
   function submitHandler(event) {
     event.preventDefault();
-
+  
     const enteredTitle = titleInputRef.current.value;
     const enteredMotivation = motivationInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
-
+    const currentDate = new Date();
+    const enteredDate = currentDate.toISOString();
+  
     const meetupData = {
       title: enteredTitle,
       image: selectedImage,
       motivation: enteredMotivation,
       description: enteredDescription,
+      date: enteredDate,
     };
-
+  
     props.onAddMeetup(meetupData);
   }
+  
 
   function handleImageChange(event) {
     setSelectedImage(event.target.value);

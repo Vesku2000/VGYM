@@ -9,6 +9,7 @@ function MeetupDetail(props) {
       />
       
       <h1>{props.title}</h1>
+      <h1>{props.date}</h1>
       <span>Motivaatio</span>
       <address>{props.address}</address>
       <p>{props.description}</p>
