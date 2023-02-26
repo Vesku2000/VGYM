@@ -38,11 +38,11 @@ export async function getDocumentIdList(client, collection) {
      return document;
  }
 
- export async function deleteDocument(client, collection, filter) {
-    const db = client.db();
+//  export async function deleteDocument(client, collection, filter) {
+//     const db = client.db();
   
-    const result = await db.collection(collection).deleteOne(filter);
+//     const result = await db.collection(collection).deleteOne(filter);
   
-    return result;
-  }
+//     return result;
+//   }
   
