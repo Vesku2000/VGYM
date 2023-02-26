@@ -18,7 +18,10 @@ function NewMeetupForm(props) {
     const enteredMotivation = motivationInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
     const currentDate = new Date();
-    const enteredDate = currentDate.toISOString();
+    const day = currentDate.getDate();
+    const month = currentDate.getMonth() + 1; // getMonth returns 0-based index, so add 1 to get the actual month number
+    const year = currentDate.getFullYear();
+    const enteredDate = `${day}.${month}.${year}`;
   
     const meetupData = {
       title: enteredTitle,
@@ -30,6 +33,7 @@ function NewMeetupForm(props) {
   
     props.onAddMeetup(meetupData);
   }
+  
   
 
   function handleImageChange(event) {

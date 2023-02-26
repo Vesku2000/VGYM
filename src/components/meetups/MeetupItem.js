@@ -21,9 +21,10 @@ function MeetupItem(props) {
           <address>{props.address}</address>
         </div>
         <div className={classes.content}>
-          <h3>{props.date}</h3>
+          
           <p>päivä</p>
-          <address>{props.date}</address>
+          <h3>{props.date}</h3>
+          
         </div>
         <div className={classes.actions}>
           <button onClick={showDetailsHandler}>Näytä Treeni</button>
