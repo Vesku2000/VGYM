@@ -1,5 +1,4 @@
-import { useRef, useState } from 'react';
-
+import { useRef, useState, useEffect } from 'react';
 import Card from '../ui/Card';
 import classes from './NewMeetupForm.module.css';
 
@@ -10,19 +9,43 @@ function NewMeetupForm(props) {
   const dateInputRef = useRef();
 
   const [selectedImage, setSelectedImage] = useState('chestImg');
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredMotivation, setEnteredMotivation] = useState('');
+  const [enteredDescription, setEnteredDescription] = useState('');
+
+  useEffect(() => {
+    const storedTitle = sessionStorage.getItem('title');
+    const storedMotivation = sessionStorage.getItem('motivation');
+    const storedDescription = sessionStorage.getItem('description');
+
+    if (storedTitle) {
+      setEnteredTitle(storedTitle);
+    }
+
+    if (storedMotivation) {
+      setEnteredMotivation(storedMotivation);
+    }
+
+    if (storedDescription) {
+      setEnteredDescription(storedDescription);
+    }
+  }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem('title', enteredTitle);
+    sessionStorage.setItem('motivation', enteredMotivation);
+    sessionStorage.setItem('description', enteredDescription);
+  }, [enteredTitle, enteredMotivation, enteredDescription]);
 
   function submitHandler(event) {
     event.preventDefault();
-  
-    const enteredTitle = titleInputRef.current.value;
-    const enteredMotivation = motivationInputRef.current.value;
-    const enteredDescription = descriptionInputRef.current.value;
+
     const currentDate = new Date();
     const day = currentDate.getDate();
     const month = currentDate.getMonth() + 1; // getMonth returns 0-based index, so add 1 to get the actual month number
     const year = currentDate.getFullYear();
     const enteredDate = `${day}.${month}.${year}`;
-  
+
     const meetupData = {
       title: enteredTitle,
       image: selectedImage,
@@ -30,22 +53,39 @@ function NewMeetupForm(props) {
       description: enteredDescription,
       date: enteredDate,
     };
-  
+
     props.onAddMeetup(meetupData);
   }
-  
-  
 
   function handleImageChange(event) {
     setSelectedImage(event.target.value);
+  }
+
+  function handleTitleChange(event) {
+    setEnteredTitle(event.target.value);
+  }
+
+  function handleMotivationChange(event) {
+    setEnteredMotivation(event.target.value);
+  }
+
+  function handleDescriptionChange(event) {
+    setEnteredDescription(event.target.value);
   }
 
   return (
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor='title'>Exercise Title</label>
-          <input type='text' required id='title' ref={titleInputRef} />
+          <label htmlFor="title">Exercise Title</label>
+          <input
+            type="text"
+            required
+            id="title"
+            ref={titleInputRef}
+            value={enteredTitle}
+            onChange={handleTitleChange}
+          />
         </div>
         <div className={classes.control}>
           <label htmlFor='image'>Exercise Image</label>
@@ -58,7 +98,12 @@ function NewMeetupForm(props) {
         </div>
         <div className={classes.control}>
           <label htmlFor='address'>Fiilis</label>
-          <input type='text' required id='address' ref={motivationInputRef} />
+          <input type='text' 
+          required id='address' 
+          ref={motivationInputRef}
+          value={enteredMotivation}
+          onChange={handleMotivationChange}
+          />
         </div>
         <div className={classes.control}>
           <label htmlFor='description'>Liikkeet</label>
@@ -67,6 +112,8 @@ function NewMeetupForm(props) {
             required
             rows='5'
             ref={descriptionInputRef}
+            value={enteredDescription}
+            onChange={handleDescriptionChange}
           ></textarea>
         </div>
         <div className={classes.actions}>
