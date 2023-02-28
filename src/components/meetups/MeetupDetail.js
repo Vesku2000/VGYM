@@ -13,8 +13,9 @@ function MeetupDetail(props) {
       <span>Motivaatio</span>
       <address>{props.address}</address>
       <p>{props.description}</p>
-      <button>Muokkaa treeniä</button>
       <button>Poista treeni</button>
+      <button>Muokkaa treeniä</button>
+      
       
     </section>
   );
