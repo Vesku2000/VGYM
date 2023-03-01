@@ -55,6 +55,7 @@ function NewMeetupForm(props) {
     };
 
     props.onAddMeetup(meetupData);
+    alert("Treeni lisätty!");
   }
 
   function handleImageChange(event) {
