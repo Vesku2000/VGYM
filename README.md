@@ -1,5 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+this is my first next.js project.
+goal is to make this tracking my own gym progress
 ## Getting Started
 
 First, run the development server:
