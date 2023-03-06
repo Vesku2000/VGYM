@@ -26,11 +26,28 @@ async function handler(req, res) {
         }
 
         res.status(201).json({ message: 'exercise inserted'});
+    } else if (req.method === 'DELETE') {
+        const id = req.query.id;
 
-        
-       
+        let client;
+
+        try {
+            client = await connectDatabase();
+        } catch(error) {
+            res.status(500).json({ message: 'Connecting to the database failed'});
+            return;
+        }
+
+        try {
+            const result = await deleteDocument(client, 'exercises', { _id: ObjectId(id) });
+            client.close();
+            res.status(200).json({ message: 'exercise deleted'});
+        } catch (error) {
+            res.status(500).json({ message: 'Deleting data failed'});
+            return;
+        }
     }
-    
 }
+
 
 export default handler;
