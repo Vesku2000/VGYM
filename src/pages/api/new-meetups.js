@@ -27,7 +27,7 @@ async function handler(req, res) {
 
         res.status(201).json({ message: 'exercise inserted'});
     } else if (req.method === 'DELETE') {
-        const id = req.query.id;
+        const data = req.body;
 
         let client;
 
@@ -39,7 +39,8 @@ async function handler(req, res) {
         }
 
         try {
-            const result = await deleteDocument(client, 'exercises', { _id: ObjectId(id) });
+            await deleteDocument(client, 'exercises', data);
+            
             client.close();
             res.status(200).json({ message: 'exercise deleted'});
         } catch (error) {
