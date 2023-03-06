@@ -6,7 +6,7 @@ function NewMeetupForm(props) {
   const titleInputRef = useRef();
   const motivationInputRef = useRef();
   const descriptionInputRef = useRef();
-  const dateInputRef = useRef();
+  
 
   const [selectedImage, setSelectedImage] = useState('chestImg');
   const [enteredTitle, setEnteredTitle] = useState('');
