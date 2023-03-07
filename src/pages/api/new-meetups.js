@@ -1,6 +1,6 @@
 
 
-import { connectDatabase, insertDocument } from '../../helpers/db-util';
+import { connectDatabase, insertDocument, deleteDocument } from '../../helpers/db-util';
 // /api/new-meetup
 // POST /api/new-meetup
 

@@ -7,8 +7,9 @@ function NewMeetupForm(props) {
   const motivationInputRef = useRef();
   const descriptionInputRef = useRef();
   
+  
 
-  const [selectedImage, setSelectedImage] = useState('chestImg');
+  const [selectedImage, setSelectedImage] = useState('https://www.bodybuilding.com/images/2017/october/the-13-best-chest-exercises-for-men-header-v2-EVL-830x467.jpg');
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredMotivation, setEnteredMotivation] = useState('');
   const [enteredDescription, setEnteredDescription] = useState('');
