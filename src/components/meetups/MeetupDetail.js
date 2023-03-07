@@ -2,6 +2,14 @@ import classes from './MeetupDetail.module.css';
 
 
 function MeetupDetail(props) {
+
+  function submitHandler(event){
+    event.preventDefault();
+
+    props.onDeleteTraining(trainingData);
+    alert("Treeni poistettu");
+  }
+
   return (
     <section className={classes.detail}>
       <img
@@ -15,7 +23,7 @@ function MeetupDetail(props) {
       <address>{props.address}</address>
       <p>{props.description}</p>
       <div className={classes.actions}>
-        <button>Poista treeni</button>
+        <button onSubmit={submitHandler}>Poista treeni</button>
       </div>
       
       <button>Muokkaa treeniä</button>
