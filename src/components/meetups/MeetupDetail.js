@@ -3,8 +3,8 @@ import classes from './MeetupDetail.module.css';
 function MeetupDetail(props) {
   function submitHandler(event) {
     event.preventDefault();
-    
-    props.onDeleteTraining(props.id);
+    const id = props.id;
+    props.onDeleteTraining(id);
     alert("Treeni poistettu");
   }
 
@@ -16,6 +16,7 @@ function MeetupDetail(props) {
       <span>Motivaatio</span>
       <address>{props.address}</address>
       <p>{props.description}</p>
+      <p>{props.id}</p>
       <div className={classes.actions}>
         <button onClick={submitHandler}>Poista treeni</button>
       </div>
