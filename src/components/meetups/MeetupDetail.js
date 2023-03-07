@@ -3,6 +3,7 @@ import classes from './MeetupDetail.module.css';
 function MeetupDetail(props) {
   function submitHandler(event) {
     event.preventDefault();
+    
     props.onDeleteTraining(props.id);
     alert("Treeni poistettu");
   }
