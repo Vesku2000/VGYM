@@ -47,7 +47,7 @@ function NewMeetupForm(props) {
     const year = currentDate.getFullYear();
     const enteredDate = `${day}.${month}.${year}`;
 
-    const meetupData = {
+    const trainingData = {
       title: enteredTitle,
       image: selectedImage,
       motivation: enteredMotivation,
@@ -55,7 +55,7 @@ function NewMeetupForm(props) {
       date: enteredDate,
     };
 
-    props.onAddMeetup(meetupData);
+    props.onAddMeetup(trainingData);
     alert("Treeni lisätty!");
   }
 
