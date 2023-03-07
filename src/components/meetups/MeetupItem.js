@@ -24,6 +24,7 @@ function MeetupItem(props) {
           
           <p>päivä</p>
           <h3>{props.date}</h3>
+          <h1>{props.id}</h1>
           
         </div>
         <div className={classes.actions}>
