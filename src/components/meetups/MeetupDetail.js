@@ -1,11 +1,17 @@
+
 import classes from './MeetupDetail.module.css';
 
+
 function MeetupDetail(props) {
+
+
+
+   
+
   function submitHandler(event) {
     event.preventDefault();
     const id = props.id;
-    props.onDeleteTraining(id);
-    alert("Treeni poistettu");
+    deleteTrainingHandler(id);
   }
 
   return (
