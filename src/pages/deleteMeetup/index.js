@@ -1,13 +1,13 @@
 // our-domain.com/new-meetup
 import MeetupDetail from '@/components/meetups/MeetupDetail';
-import NewMeetupForm from '../../components/meetups/NewMeetupForm';
+
 
 function NewMeetupPage() {
-  async function deleteTrainingHandler(enteredTrainingID){
+  async function deleteTrainingHandler(id){
 
     const response = await fetch('/api/new-meetups', {
       method: 'DELETE',
-      body: JSON.stringify(enteredTrainingID),
+      body: JSON.stringify(id),
       headers: {
         'Content-Type': 'application/json'
       }
