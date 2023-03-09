@@ -12,8 +12,8 @@ function MeetupDetail(props) {
     event.preventDefault();
     const id = props.id;
     console.log(id);
-  
-    de
+    props.onDeleteTraining(id)
+    
   }
 
   return (

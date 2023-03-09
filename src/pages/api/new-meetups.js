@@ -1,5 +1,5 @@
 
-import { connectDatabase, insertDocument, deleteDocument } from '../../helpers/db-util';
+import { connectDatabase, insertDocument, deleteDocumentById } from '../../helpers/db-util';
 import { ObjectId } from 'mongodb';
 
 // rest of the code...
@@ -42,7 +42,7 @@ async function handler(req, res) {
         }
 
         try {
-             await deleteDocument(client, 'exercises', data) {
+             await deleteDocumentById(client, 'exercises', data) {
                 const db = client.db();
                 const result = await db.collection(collection).deleteOne({ _id: new ObjectId(id) });
                 console.log(`${result.deletedCount} document(s) deleted.`);
