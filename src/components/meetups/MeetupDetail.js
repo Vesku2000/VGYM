@@ -13,28 +13,7 @@ function MeetupDetail(props) {
     const id = props.id;
     console.log(id);
   
-    fetch('/api/new-meetup', {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ id: id }),
-    })
-    
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Deleting meetup failed.');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data.message);
-        // TODO: handle successful deletion
-      })
-      .catch((error) => {
-        console.error(error);
-        // TODO: handle error
-      });
+    de
   }
 
   return (
