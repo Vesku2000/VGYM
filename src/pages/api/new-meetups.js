@@ -42,7 +42,7 @@ async function handler(req, res) {
         }
 
         try {
-             async function deleteDocument(client, collection, id) {
+             await deleteDocument(client, 'exercises', data) {
                 const db = client.db();
                 const result = await db.collection(collection).deleteOne({ _id: new ObjectId(id) });
                 console.log(`${result.deletedCount} document(s) deleted.`);
