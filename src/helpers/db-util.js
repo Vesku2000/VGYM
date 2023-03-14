@@ -41,7 +41,7 @@ export async function getDocumentIdList(client, collection) {
  export async function deleteDocumentById(client, collection, filter) {
     const db = client.db();
 
-    const document = await db.collection(collection).deleteOne(filter);
+    await db.collection(collection).deleteOne(filter);
     
     return;
   }
