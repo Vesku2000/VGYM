@@ -38,11 +38,12 @@ export async function getDocumentIdList(client, collection) {
      return document;
  }
 
- export async function deleteDocumentById(client, collection, id) {
+ export async function deleteDocumentById(client, collection, filter) {
     const db = client.db();
-    const result = await db.collection(collection).deleteOne({ _id: ObjectId(id) });
-    console.log(`Deleted ${result.deletedCount} document(s) from the ${collection} collection.`);
-    return result;
+
+    const document = await db.collection(collection).deleteOne(filter);
+    
+    return;
   }
   
   
